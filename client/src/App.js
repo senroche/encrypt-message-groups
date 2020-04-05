@@ -8,6 +8,7 @@ class App extends Component {
         this.state = { apiResponse: "" };
     }
 
+    // Go to API and check testAPI route for a response
     callAPI() {
         fetch("http://localhost:9000/testAPI")
             .then(res => res.text())

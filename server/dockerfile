@@ -1,0 +1,16 @@
+FROM node:12.6.0
+ADD . /server
+WORKDIR /server
+COPY . /server
+RUN npm install
+RUN npm install -g nodemon
+## Wait for mongoose
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+
+## Launch the wait tool and then your application
+CMD /wait && npm start
+
+# Run the app when the container launches
+ENV PORT 9000
+
