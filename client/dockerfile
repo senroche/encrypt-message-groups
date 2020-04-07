@@ -1,0 +1,6 @@
+FROM node:12.6.0
+ADD . /client
+WORKDIR /client
+COPY . /client
+RUN npm install
+CMD npm start

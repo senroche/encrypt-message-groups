@@ -10,14 +10,16 @@ class App extends Component {
 
     // Go to API and check testAPI route for a response
     callAPI() {
-        fetch("http://localhost:9000/testAPI")
+        fetch("http://localhost:5000/testAPI")
             .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }))
+            .then(res => this.state({ apiResponse: res }))
             .catch(err => err);
     }
 
+
     componentDidMount() {
         this.callAPI();
+        console.log("This", this.state.apiResponse)
     }
 
     render() {

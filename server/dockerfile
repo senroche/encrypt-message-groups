@@ -12,5 +12,5 @@ RUN chmod +x /wait
 CMD /wait && npm start
 
 # Run the app when the container launches
-ENV PORT 9000
+ENV PORT 5000
 

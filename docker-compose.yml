@@ -20,6 +20,19 @@ services:
 #            - rasa
         restart: on-failure
 
+    client:
+        build: ./client
+        restart: on-failure
+        container_name: client
+        ports:
+            - "${REACT_APP_PORT}:${REACT_APP_PORT}"
+        volumes:
+            - ./client:/client
+        depends_on:
+#        - rasa
+        - server
+        restart: on-failure
+
     db:
         image: mongo:latest
         volumes:
