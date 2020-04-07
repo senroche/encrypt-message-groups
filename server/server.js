@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors')
+var router = express.Router();
 require('dotenv').config()
 var testAPIRouter = require("./routes/testAPI");
+var testDB = require("./routes/testDB");
 
 
 const app = express()
@@ -14,8 +16,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/test', testAPIRouter);
+app.use('/testDB', testDB);
 
-
+app.use('/api', router);
 app.use(function (req, res, next) {
     res.status(404).send('Not found');
 });

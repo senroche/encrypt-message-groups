@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-
 const axios = require('axios');
 class App extends Component {
     constructor(props) {
@@ -13,8 +12,7 @@ class App extends Component {
     callAPI() {
         axios.get("http://localhost:5000/test")
             .then((response) => {
-                console.log(response.data);
-                this.setState({ apiRespone: response.data });
+                this.setState({ apiResponse: response.data });
             })
             .catch(function (error) {
                 console.log(error);
@@ -23,14 +21,17 @@ class App extends Component {
 
     componentDidMount() {
         this.callAPI();
-        e)
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <h1 className="App-title">Welcome to React</h1>
-            </header>
-            <p className="App-intro">{this.state.apiResponse}</p>
-        </div>
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h1 className="App-title">Welcome to React</h1>
+                </header>
+                <p className="App-intro">{this.state.apiResponse}</p>
+            </div>
         );
     }
 }

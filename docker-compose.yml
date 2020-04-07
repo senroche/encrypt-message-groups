@@ -1,10 +1,10 @@
 version: "2"
 services:
 
-    server:
+    social-server:
         build: ./server
         restart: always
-        container_name: server
+        container_name: social-server
         ports:
             - "${SERVER_PORT}:${SERVER_PORT}"
         volumes:
@@ -14,26 +14,27 @@ services:
             - MONGO_CONNECTION_STRING=${MONGO_CONNECTION_STRING}
             - MONGO_CONNECTION_STRING_ADMIN=${MONGO_CONNECTION_STRING_ADMIN}
             # script to wait for mongo to be fully up & running
-            - WAIT_HOSTS=db:${MONGO_PORT}
+            - WAIT_HOSTS=social-db:${MONGO_PORT}
         depends_on:
-            - db
+            - social-db
 #            - rasa
         restart: on-failure
 
-    client:
+    social-client:
         build: ./client
         restart: on-failure
-        container_name: client
+        container_name: social-client
         ports:
             - "${REACT_APP_PORT}:${REACT_APP_PORT}"
         volumes:
             - ./client:/client
         depends_on:
 #        - rasa
-        - server
+        - social-server
         restart: on-failure
 
-    db:
+    social-db:
+        container_name: social-db
         image: mongo:latest
         volumes:
             - $DATABASE_DATA:/$DATABASE_DATA
