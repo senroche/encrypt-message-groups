@@ -13,8 +13,10 @@ app.get('/', (req, res) => {
     res.status(200).send("Hey");
 });
 
-app.use('/test', testAPIRouter);
+const apiRouter = express.Router();
+app.use('/api', apiRouter);
 
+apiRouter.use('/test', testAPIRouter);
 
 app.use(function (req, res, next) {
     res.status(404).send('Not found');
