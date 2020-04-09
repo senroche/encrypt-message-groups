@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.login {
+	width: 400px;
+  margin: auto;
+	position: relative;
+    top: 100px;
+    text-align: center;
+
+}

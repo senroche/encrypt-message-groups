@@ -16,8 +16,11 @@ app.get('/', (req, res) => {
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 
+// Router for api
 apiRouter.use('/test', testAPIRouter);
 
+
+// Route not found
 app.use(function (req, res, next) {
     res.status(404).send('Not found');
 });
