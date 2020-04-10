@@ -8,18 +8,17 @@ db.once('open', () => {
     console.log('Dabase connection is working');
 });
 
-
 var bcrypt = require('bcryptjs');
 var saltFactor = 10;
 
+var Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema,
 
+// User Auth Schema
 var UserSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true }
 });
-
 
 UserSchema.pre('save', function (next) {
     var user = this;
@@ -42,6 +41,7 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+
 
 const UserModel = mongoose.model('user', UserSchema);
 
