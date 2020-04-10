@@ -14,9 +14,9 @@ services:
             - MONGO_CONNECTION_STRING=${MONGO_CONNECTION_STRING}
             - MONGO_CONNECTION_STRING_ADMIN=${MONGO_CONNECTION_STRING_ADMIN}
             # script to wait for mongo to be fully up & running
-            - WAIT_HOSTS=social-db:${MONGO_PORT}
+            - WAIT_HOSTS=db:${MONGO_PORT}
         depends_on:
-            - social-db
+            - db
 #            - rasa
         restart: on-failure
 
@@ -33,14 +33,13 @@ services:
         - social-server
         restart: on-failure
 
-    social-db:
-        container_name: social-db
+    db:
         image: mongo:latest
         volumes:
             - $DATABASE_DATA:/$DATABASE_DATA
             # Put the script to initialise the database in the right directory withing mongo container
             # It will execute it on initialisation
-            - ./initDB.js:/docker-entrypoint-initDB.d/initDB.js:ro
+            - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
         environment:
             # to connect from cmd line run (read / write user) for root access use root user
             # mongo --port 27017 -u "user" -p "password" --authenticationDatabase "db"

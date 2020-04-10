@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class Auth extends Component {
@@ -20,7 +20,6 @@ class Auth extends Component {
 
     async handleSubmit(event) {
         this.setState({ redirect: "/dashboard" })
-        // We will have some auth happening here later, for now reroute on submit.
         this.setState({ submit: true })
     }
 
@@ -40,7 +39,7 @@ class Auth extends Component {
 
     render() {
         if (this.state.submit) {
-            return <Redirect to={this.state.redirect} />
+            return <Link to={this.state.redirect} />
         }
         return (
             <LoginForm onChange={this.handleChanges} onSubmit={this.handleSubmit} />
