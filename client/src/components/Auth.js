@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
 import { Link } from 'react-router-dom';
-
+import Home from './Wall';
 
 class Auth extends Component {
     constructor(props) {
@@ -9,20 +9,19 @@ class Auth extends Component {
         this.state = {
             email: '',
             password: '',
-            submit: false,
-            redirect: null,
+            submit: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChanges = this.handleChanges.bind(this);
     }
 
-
     async handleSubmit(event) {
-        this.setState({ redirect: "/dashboard" })
-        this.setState({ submit: true })
+        // Axios -> login
+        // If returns "false" -> create new user
+        // Else -> store user private key
+        this.setState({ submit: true });
     }
-
 
     handleChanges(event) {
         if (event.target.name === "username") {
@@ -36,15 +35,13 @@ class Auth extends Component {
         }
     }
 
-
     render() {
         if (this.state.submit) {
-            return <Link to={this.state.redirect} />
+            return <Home />
         }
         return (
             <LoginForm onChange={this.handleChanges} onSubmit={this.handleSubmit} />
         )
-
     }
 }
 

@@ -3,6 +3,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 
 
 import { Auth as AuthV } from './components';
+import { Home as HomeV } from './components';
 
 
 const Routes = () => {
@@ -15,6 +16,9 @@ const Routes = () => {
             />
             <Route path="/auth">
                 <AuthV />
+            </Route>
+            <Route path="/home">
+                <HomeV />
             </Route>
         </Switch>
     );
