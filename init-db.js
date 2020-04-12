@@ -4,7 +4,7 @@ db.createUser(
         pwd: "root",
         roles: [
             { role: "dbAdmin", db: "db" },
-            { role: "dbAdmin", db: "test" }
+
         ]
     }
 )
@@ -14,7 +14,6 @@ db.createUser(
         pwd: "password",
         roles: [
             { role: "readWrite", db: "db" },
-            { role: "readWrite", db: "test" },
         ]
     }
 )

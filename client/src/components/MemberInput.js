@@ -10,11 +10,11 @@ const MemberInputs = ({ idx, memberState, handleMemberChange }) => {
     return (
         <div key={`mem-${idx}`}>
 
-            <Form.Control type="text" placeholder={`member ${idx + 1}`}
+            <Form.Control type="text" placeholder={`Member ${idx + 1}`}
                 name={memId}
                 data-idx={idx}
                 id={memId}
-                className="entity"
+                className="member"
                 value={memberState[idx].name}
                 onChange={handleMemberChange}
             />
@@ -25,7 +25,7 @@ const MemberInputs = ({ idx, memberState, handleMemberChange }) => {
 MemberInputs.propTypes = {
     idx: PropTypes.number,
     memberState: PropTypes.array,
-    handleCatChange: PropTypes.func,
+    handleMemberChange: PropTypes.func,
 };
 
 export default MemberInputs;

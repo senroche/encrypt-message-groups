@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
 import { Link } from 'react-router-dom';
-import Home from './Wall';
+import Home from './Home';
+import AddMemberForm from './AddMemberForm';
 
 class Auth extends Component {
     constructor(props) {
@@ -16,11 +17,8 @@ class Auth extends Component {
         this.handleChanges = this.handleChanges.bind(this);
     }
 
-    async handleSubmit(event) {
-        // Axios -> login
-        // If returns "false" -> create new user
-        // Else -> store user private key
-        this.setState({ submit: true });
+    async handleSubmit() {
+
     }
 
     handleChanges(event) {

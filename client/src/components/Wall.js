@@ -112,25 +112,25 @@ class Wall extends Component {
         return (
             <div>
                 <Container fluid className="tile-glow">
-                    <h4> New Post: </h4>
-                    <InputGroup className="mb-3">
-                        <DropdownButton
-                            as={InputGroup.Prepend}
-                            variant="outline-secondary"
-                            title="Group"
-                            id="input-group-dropdown-1"
-                            style={{ borderColor: "#b8daff", color: "#b8daff" }}
-                        >{this.state.dropdown}
-                        </DropdownButton>
-                        <FormControl onChange={this.handlePostChange} aria-describedby="basic-addon1" />
-                        <InputGroup.Append>
-                            <Button variant="outline-secondary" onClick={this.handleSend}>Post</Button>
-                        </InputGroup.Append>
-                    </InputGroup>
-
                     <h4> Wall Posts: </h4>
-                    <div style={{ height: "400px", width: "400px", overflow: "auto", borderStyle: "solid", borderWeight: "0.1px", borderColor: "#13beb1", padding: "3px" }}>
+                    <div style={{ width: "100%", height: "500px", overflow: "auto", borderStyle: "solid", borderWeight: "0.1px", borderColor: "#13beb1", padding: "3px" }}>
                         {this.state.posts}
+                    </div>
+                    <div style={{ margin: "10px" }}>
+                        <InputGroup className="mb-3">
+                            <DropdownButton
+                                as={InputGroup.Prepend}
+                                variant="outline-secondary"
+                                title="Group"
+                                id="input-group-dropdown-1"
+                                style={{ borderColor: "#b8daff", color: "#b8daff" }}
+                            >{this.state.dropdown}
+                            </DropdownButton>
+                            <FormControl onChange={this.handlePostChange} aria-describedby="basic-addon1" />
+                            <InputGroup.Append>
+                                <Button variant="outline-secondary" onClick={this.handleSend}>Post</Button>
+                            </InputGroup.Append>
+                        </InputGroup>
                     </div>
                 </Container>
             </div>

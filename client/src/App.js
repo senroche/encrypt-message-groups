@@ -3,9 +3,7 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Routes from './Routes.js';
 
-
 const browserHistory = createBrowserHistory();
-
 
 export default class App extends Component {
     render() {

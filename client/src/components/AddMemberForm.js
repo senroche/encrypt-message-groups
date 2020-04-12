@@ -53,27 +53,38 @@ const AddMemberForm = () => {
         window.location.reload(true);
     }
 
-
-
     return (
         <Form onSubmit={handleSubmit}>
+            <h4 style={{ paddingBottom: "6px" }}>Add to group</h4>
+            <h6 style={{ paddingBottom: "6px" }}>Create a group or add a user to an existing group.</h6>
 
-            <h4 style={{ paddingBottom: "6px" }}>Edit Intent</h4>
-            <h4 style={{ paddingBottom: "6px" }}>Create New Intent</h4>
 
-
-            <Form.Group controlId="Intent">
-                <Form.Label>Intent</Form.Label>
-                <Form.Control type="text" placeholder="Enter an intent"
+            <Form.Group controlId="Member">
+                <Form.Label>Group Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter a group name"
                     name="intent"
                     onChange={handleNameChange}
+                />
+
+            </Form.Group>
+            <Form.Group>
+                <Form.Check
+                    type="radio"
+                    label="Existing group"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios1"
+                />
+                <Form.Check
+                    type="radio"
+                    label="New group"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios2"
                 />
             </Form.Group>
 
 
-
-            <Form.Group controlId="Intent.Description">
-                <Form.Label>members
+            <Form.Group controlId="Member.Description">
+                <Form.Label>People
                 <Button variant="secondary" size="sm" style={{ marginLeft: "5px", lineHeight: "1.3", borderRadius: "15px" }} value="Add another member"
                         onClick={addMember}>
                         +
@@ -84,7 +95,7 @@ const AddMemberForm = () => {
             {
                 memberState.map((val, idx) => (
                     <MemberInputs
-                        key={`mem-${idx}`}
+                        key={`memb-${idx}`}
                         idx={idx}
                         memberState={memberState}
                         handleMemberChange={handleMemberChange}
