@@ -1,25 +1,17 @@
 const mongoose = require('mongoose');
-
-mongoose.connect("mongodb://user:password@db:27017/db", { useNewUrlParser: true });
-const db = mongoose.connection;
-
-db.on('error', (error) => console.error("DB not working", error));
-db.once('open', () => {
-    console.log('Dabase connection is working');
-});
-
 var bcrypt = require('bcryptjs');
 var saltFactor = 10;
 
 var Schema = mongoose.Schema;
 
-
-// User Auth Schema
 var UserSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    private_key: { type: String, required: true, unique: true },
+    public_key: { type: String, required: true, unique: true }
 });
 
+// Handy pre save hook
 UserSchema.pre('save', function (next) {
     var user = this;
     // We only want to hash if it's modified
@@ -43,9 +35,5 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
 };
 
 
-const UserModel = mongoose.model('user', UserSchema);
 
-module.exports = {
-    db: db,
-    UserModel: UserModel,
-}
+module.exports = mongoose.model('UserModel', UserSchema);
