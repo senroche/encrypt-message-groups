@@ -4,12 +4,16 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-//const axios = require('axios').default; 
+const axios = require('axios').default;
 
-const AddMemberForm = () => {
+const AddMemberForm = (user) => {
 
     const [nameState, setNameState] = useState({
         name: '',
+    });
+
+    const [existState, setExistState] = useState({
+        exist: false,
     });
 
     const handleNameChange = (e) => setNameState({
@@ -32,20 +36,50 @@ const AddMemberForm = () => {
         setmemberState(updatedMembers);
     };
 
+    const handleClick1 = (e) => setExistState({
+        ...existState,
+        exist: true,
+    });
+
+    const handleClick2 = (e) => setExistState({
+        ...existState,
+        exist: false,
+    });
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*axios.post('http://localhost:5000/api/intents', {
-          name: nameState.name,
-          members: memberState,
-        })
-        .then(function (response) {
-          console.log(response);
-          window.location.reload(true);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });*/
+        if (existState.exist) {
+            //Can only add one member at time to existing ones atm, this should loop creating an array of promises but cba
+            axios.post('http://localhost:5000/api/groupadd', {
+                group: nameState.name,
+                username: memberState[0],
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert("Added " + memberState[0] + " to " + nameState.name)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            var arr = memberState;
+            arr.push(user.user);
+            console.log(arr);
+            axios.post('http://localhost:5000/api/group', {
+                name: nameState.name,
+                members: memberState,
+            })
+                .then(function (response) {
+                    console.log(response);
+                    setNameState('');
+                    setmemberState(['']);
+                    alert("New group created.")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     }
 
     const handleCancel = (e) => {
@@ -73,12 +107,14 @@ const AddMemberForm = () => {
                     label="Existing group"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios1"
+                    onClick={handleClick1}
                 />
                 <Form.Check
                     type="radio"
                     label="New group"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios2"
+                    onClick={handleClick2}
                 />
             </Form.Group>
 
@@ -103,7 +139,7 @@ const AddMemberForm = () => {
                 ))
             }
             <Row>
-                <Col><button onClick={handleSubmit} type="submit" className="btn btn-primary">Add</button></Col>
+                <Col> <Button onClick={handleSubmit} variant="primary" style={{ float: "left", margin: "30px" }}>Confirm</Button></Col>
                 <Col> <Button onClick={handleCancel} variant="outline-danger" style={{ float: "right", margin: "30px" }}>Cancel</Button></Col>
             </Row>
         </Form>

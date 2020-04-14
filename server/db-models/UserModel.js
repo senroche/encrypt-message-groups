@@ -7,8 +7,6 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
-    private_key: { type: String, required: true, unique: true },
-    public_key: { type: String, required: true, unique: true }
 });
 
 // Handy pre save hook
@@ -33,6 +31,7 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+
 
 
 
