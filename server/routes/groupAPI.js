@@ -2,8 +2,8 @@ const GroupModel = require("../db-models/GroupModel.js");
 var randtoken = require('rand-token');
 /*
 {
-	"name":"seanie",
-	"members": ["catshit","dogshit","shit"]
+	"name":"test",
+	"members": ["mem1","mem2","mem3"]
 }
 */
 exports.createGroup = async function (req, res) {
@@ -26,8 +26,8 @@ exports.createGroup = async function (req, res) {
 /*
 {
 	{
-	"group":"seanie",
-	"username": "nut"
+	"group":"test",
+	"username": "test"
     }
 }
 */

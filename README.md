@@ -10,7 +10,7 @@ accessible only to verified group members. I also added some basic auth using bc
 
 The frontend is lacking in some features that are supported on the backend but overall the system works well.
 
-## Video of application working
+## Video of application working (right-click -> 'Open image in new tab')
 ![](demo.gif)
 
 
@@ -19,8 +19,8 @@ The frontend is lacking in some features that are supported on the backend but o
 ## Main Technologies:
 - [React](https://reactjs.org/) 
 - [Node.js](https://nodejs.org/en/)
-- [Express](https://mongoosejs.com/)
-- [MongoDB](https://mongoosejs.com/)
+- [Express](https://https://expressjs.com/)
+- [MongoDB](https://https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
 - [Docker](https://www.docker.com)
 - [cyrpto-js](https://www.npmjs.com/package/crypto-js) for AES encryption on post creation, decryption for verified members
