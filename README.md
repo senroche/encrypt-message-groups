@@ -1,14 +1,19 @@
 # encrypted-message-groups - CSU34031 Project
 
-The aim of this project is to create a social network application that only shows messages from users within one of your trusted
+## Overview
+The aim of this project was to create a social network application that only shows messages from users within one of your trusted
 groups. Other users posts simply appear as cipher text. 
 
-The app is dockerized and utilizes the MERN stack. All encryption and decryption happens on the express server. Posts are encrypted on 
-creation using AES and are decrypted by a secret key maintained in the database, accessible to verified group members. I also added 
-some basic auth using bcypt to hash and salt before storing.
+This application is dockerized and utilizes the full MERN stack. Posts are encrypted on creation using AES and all encryption and decryption 
+happens on the server. A secret key is randomly generated for each group on creation. This key is maintained within the database, 
+accessible only to verified group members. I also added some basic auth using bcypt to hash and salt before storing.
+
+The frontend is lacking in some features that are supported on the backend but overall the system works well.
 
 ## Video of application working
 ![](demo.gif)
+
+
 
 
 ## Main Technologies:
